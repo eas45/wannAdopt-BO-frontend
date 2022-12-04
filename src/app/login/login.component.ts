@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +17,13 @@ export class LoginComponent {
   public get nickname() { return this.loginForm.value.nickname; }
   public get password() { return this.loginForm.value.password; }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router) { }
 
   onSubmit() {
     console.log('Submited');
+    this.router.navigate(['home']);
   }
 
 }
