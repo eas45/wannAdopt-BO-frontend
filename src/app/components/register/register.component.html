@@ -1,1 +1,49 @@
-<p>register works!</p>
+<div class="register-form">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- Email input -->
+        <div class="form-group my-4">
+          <label
+            class="form-label"
+            for="emailLabelRegisterForm">
+              Correo electrónico
+          </label>
+          <input
+            id="emailInputRegisterForm"
+            type="text"
+            class="form-control"
+            [ngClass]="(email.dirty || email.touched) ? 
+              (email.invalid ? 'is-invalid' : 'is-valid') : ''"
+            formControlName="email"
+            autocomplete="off"
+          />
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <label
+            class="form-label"
+            for="passwordLabelRegisterForm">
+              Contraseña
+          </label>
+          <input
+            id="passwordInputRegisterForm"
+            type="password"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': password?.invalid && (password?.dirty || password?.touched) }"
+            formControlName="password"
+          />
+        </div>
+
+        <!-- Submit button -->
+        <button
+          type="submit"
+          class="btn btn-primary btn-block mb-4"
+          [disabled]="registerForm.invalid">
+            Crear cuenta
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
