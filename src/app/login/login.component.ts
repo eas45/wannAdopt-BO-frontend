@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,12 +10,14 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   loginForm = this.fb.group({
-    nickname: ['', Validators.required],
+    email: ['',
+      [Validators.required, Validators.email]
+    ],
     password: ['', Validators.required]
   })
 
-  public get nickname() { return this.loginForm.value.nickname; }
-  public get password() { return this.loginForm.value.password; }
+  get email(): any { return this.loginForm.get('email'); }
+  get password() { return this.loginForm.get('password'); }
 
   constructor(
     private fb: FormBuilder,
