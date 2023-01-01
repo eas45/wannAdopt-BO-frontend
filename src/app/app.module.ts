@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/login/login.component';
-import { HomepageComponent } from './components/homepage/homepage.component';
 
 import { httpInterceptorProviders } from './helpers/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
@@ -18,7 +17,6 @@ import { AnimalsListComponent } from './components/animals-list/animals-list.com
   declarations: [
     AppComponent,
     LoginComponent,
-    HomepageComponent,
     RegisterComponent,
     AddAnimalComponent,
     AnimalDetailsComponent,
