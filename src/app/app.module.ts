@@ -10,13 +10,19 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 
 import { httpInterceptorProviders } from './helpers/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { AddAnimalComponent } from './components/add-animal/add-animal.component';
+import { AnimalDetailsComponent } from './components/animal-details/animal-details.component';
+import { AnimalsListComponent } from './components/animals-list/animals-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomepageComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddAnimalComponent,
+    AnimalDetailsComponent,
+    AnimalsListComponent
   ],
   imports: [
     BrowserModule,
