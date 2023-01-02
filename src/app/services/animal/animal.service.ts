@@ -15,7 +15,7 @@ export class AnimalService {
     return this.http.get<Animal[]>(baseUrl);
   }
 
-  get(id: any): Observable<Animal> {
+  find(id: any): Observable<Animal> {
     return this.http.get<Animal>(`${baseUrl}/${id}`);
   }
 
