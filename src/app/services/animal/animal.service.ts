@@ -20,7 +20,7 @@ export class AnimalService {
   }
 
   create(animal: any): Observable<any> {
-    return this.http.post(baseUrl, animal);
+    return this.http.post(`${baseUrl}?shelter=5`, animal);
   }
 
   update(id: any, data: any): Observable<any> {
