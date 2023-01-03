@@ -1,51 +1,31 @@
 <div>
-  <nav
-    class="navbar navbar-expand navbar-dark bg-dark"
-  >
-    <span
-      class="navbar-brand"
-    >
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <span class="navbar-brand">
       WannAdopt
     </span>
-    <div
-      class="navbar-nav mr-auto"
-    >
-      <li
-        class="nav-item"
-      >
-        <a
-          class="nav-link"
-          routerLink="animals"
-        >
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <span class="nav-link">{{ email }}</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="animals">
           Animales de compañía
         </a>
       </li>
-      <li
-        class="nav-item"
-      >
-        <a
-          class="nav-link"
-          routerLink="add"
-        >
+      <li class="nav-item">
+        <a class="nav-link" routerLink="add">
           Añadir
         </a>
       </li>
-      <li
-        class="nav-item"
-      >
-        <a
-          class="nav-link"
-          routerLink="profile"
-        >
+      <li class="nav-item">
+        <a class="nav-link" routerLink="profile">
           Perfil
         </a>
       </li>
     </div>
   </nav>
 
-  <div
-    class="container mt-3"
-  >
+  <div class="container mt-3">
     <router-outlet></router-outlet>
   </div>
 </div>
