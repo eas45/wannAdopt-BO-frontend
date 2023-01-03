@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +18,16 @@ export class LoginComponent {
     password: ['', Validators.required]
   })
 
+  cookie: any;
+
   get email(): any { return this.loginForm.get('email'); }
   get password(): any { return this.loginForm.get('password'); }
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private storageService: StorageService) { }
 
   onSubmit() {
     // console.log(this.email.value);
@@ -32,10 +36,9 @@ export class LoginComponent {
     this.authService.login(this.email.value, this.password.value)
       .subscribe({
         next: (res) => {
-          console.log('Respuesta recibida');
-
           console.log(res);
-          this.router.navigate(['home']);
+          // Save token in local storage
+          this.storageService.saveLoginData(res);
         },
         error: (err) => {
           console.log(`Error con estado ${err.status}:\n${err.error.message}`);
