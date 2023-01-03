@@ -10,7 +10,7 @@ import { AuthService } from './services/auth/auth.service';
 export class AppComponent {
   title = 'wannAdopt-BO-frontend';
   isLoggedIn: boolean = false;
-  email: string = '';
+  email: string = '+';
 
   constructor(
     private storageService: StorageService,
@@ -20,8 +20,7 @@ export class AppComponent {
     this.isLoggedIn = this.storageService.isLoggedIn();
 
     if (this.isLoggedIn) {
-      const user = this.storageService.getUser();
-      this.email = user.email;
+      this.email = this.storageService.getEmail();
     }
   }
   
