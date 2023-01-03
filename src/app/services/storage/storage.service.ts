@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-const USER_KEY = 'auth-user';
+const TOKEN_KEY = 'auth-token';
+const EMAIL_KEY = 'email-profile';
 
 @Injectable({
   providedIn: 'root'
@@ -11,24 +12,40 @@ export class StorageService {
   clean(): void {
     window.sessionStorage.clear();
   }
-
-  public saveUser(user: any): void {
-    window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+  
+  public saveLoginData(loginData: any): void {
+    window.sessionStorage.removeItem(TOKEN_KEY);
+    window.sessionStorage.removeItem(EMAIL_KEY);
+    // window.sessionStorage.setItem(TOKEN_KEY, JSON.stringify(loginData));
+    window.sessionStorage.setItem(TOKEN_KEY, loginData.token);
+    window.sessionStorage.setItem(EMAIL_KEY, loginData.email);
   }
 
-  public getUser(): any {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return JSON.parse(user);
+  public getToken(): any {
+    const token = window.sessionStorage.getItem(TOKEN_KEY);
+    if (token) {
+      // return JSON.parse(token);
+      return token;
+    }
+
+    return {};
+  }
+
+  public getEmail(): any {
+    const email = window.sessionStorage.getItem(EMAIL_KEY);
+    if (email) {
+      // return JSON.parse(email);
+      return email;
     }
 
     return {};
   }
 
   public isLoggedIn(): boolean {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
+    const token = window.sessionStorage.getItem(TOKEN_KEY);
+    console.log(token);
+    
+    if (token) {
       return true;
     }
 
