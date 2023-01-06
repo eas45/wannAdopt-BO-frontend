@@ -10,7 +10,7 @@ export class EventService {
 
   constructor() { }
 
-  publishLogin(): void {
+  publishLogin(): void {    
     this.loginSubject.next(true);
   }
 

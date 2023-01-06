@@ -19,11 +19,13 @@ export class AppComponent {
     private event: EventService) { }
 
   ngOnInit(): void {
-    
+    this.init();
   }
 
   async init() {
     this.event.getLoginObservable().subscribe((isLoggedIn) => {
+      console.log('Usuario logueado : ' + isLoggedIn);
+      
       this.isLoggedIn = isLoggedIn;
     });
   }

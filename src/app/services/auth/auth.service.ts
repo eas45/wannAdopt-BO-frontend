@@ -20,7 +20,7 @@ export class AuthService {
       AUTH_API + 'login',
       {
         email,
-        password,
+        password
       },
       httpOptions
     );
@@ -32,6 +32,7 @@ export class AuthService {
       {
         email,
         password,
+        role: 'shelter'
       },
       httpOptions
     );
