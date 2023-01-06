@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { EventService } from 'src/app/services/event/event.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
@@ -27,7 +28,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private storageService: StorageService) { }
+    private storageService: StorageService,
+    private eventService: EventService) { }
 
   onSubmit() {
     // console.log(this.email.value);
@@ -39,6 +41,7 @@ export class LoginComponent {
           console.log(res);
           // Save token in local storage
           this.storageService.saveLoginData(res);
+          this.eventService.publishLogin();
         },
         error: (err) => {
           console.log(`Error con estado ${err.status}:\n${err.error.message}`);

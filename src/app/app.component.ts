@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { StorageService } from './services/storage/storage.service';
 import { AuthService } from './services/auth/auth.service';
+import { EventService } from './services/event/event.service';
 
 @Component({
   selector: 'app-root',
@@ -14,14 +15,17 @@ export class AppComponent {
 
   constructor(
     private storageService: StorageService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private event: EventService) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.storageService.isLoggedIn();
+    
+  }
 
-    if (this.isLoggedIn) {
-      this.email = this.storageService.getEmail();
-    }
+  async init() {
+    this.event.getLoginObservable().subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    });
   }
   
   logout(): void {

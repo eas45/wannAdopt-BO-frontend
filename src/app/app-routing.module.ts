@@ -38,6 +38,7 @@ const routes: Routes = [
     canActivate: [IsLoggedInGuard],
     component: AddAnimalComponent
   },
+  // Shelter
   {
     path: 'profile',
     canActivate: [IsLoggedInGuard],
