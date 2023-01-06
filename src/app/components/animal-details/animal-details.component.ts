@@ -62,7 +62,7 @@ export class AnimalDetailsComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.router.navigate(['/animals']);
+          this.router.navigate(['animals']);
         },
         error: (err) => {
           console.log(err.error);

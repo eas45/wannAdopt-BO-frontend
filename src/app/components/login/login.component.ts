@@ -42,6 +42,7 @@ export class LoginComponent {
           // Save token in local storage
           this.storageService.saveLoginData(res);
           this.eventService.publishLogin();
+          this.router.navigate(['animals']);
         },
         error: (err) => {
           console.log(`Error con estado ${err.status}:\n${err.error.message}`);
