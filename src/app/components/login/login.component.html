@@ -1,55 +1,67 @@
-<div class="register-form">
-  <div class="card">
-    <div class="card-body">
-      <!-- [ngClass]="(email.dirty || email.touched) ? (email.invalid ? 'is-invalid' : 'is-valid') : ''" -->
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <!-- Email input -->
-        <div class="form-group my-4">
-          <label
-            class="form-label"
-            for="emailLabelLoginForm">
-              Email
-          </label>
-          <input
-            id="emailInputLoginForm"
-            type="text"
-            class="form-control"
-            [ngClass]="{ 'is-invalid': email?.invalid && (email?.dirty || email?.touched) }"
-            formControlName="email"
-            autocomplete="off"
-          />
-          <!-- <label id="emailErrorLoginForm" *ngIf="email.invalid && (email.dirty || email.touched)" class="small text-danger">
-          <div *ngIf="email.errors?.['required']" class="text-danger">Campo requerido.</div>
-          <div *ngIf="email.errors?.['email']" class="text-danger">Debe ser un correo válido.</div>
-        </label> -->
-        </div>
+<div class="welcome-display">
+  <div class="welcome-text">
+    <h1>wannAdopt</h1>
+    <h3>
+      Portal de gestión para refugios
+    </h3>
+    <div class="border border-dark rounded-3 p-3 border-opacity-25 text-center" style="margin: 15%;">
+      Si eres un <strong>refugio de animales domésticos</strong> y quieres aumentar tu alcance para llevar a cabo sus
+      <strong>adopciones</strong>, crea tu cuenta y comienza a ver cómo tus animales encontrarán un hogar.<br><br>
+      ¿A qué esperas?<br>
+      ¡Crea tu cuenta y accede a tu panel de control ya!
+    </div>
 
-        <!-- Password input -->
-        <div class="form-outline mb-4">
-          <label
-            class="form-label"
-            for="passwordLabelLoginForm">
-              Password
-          </label>
-          <input
-            id="passwordInputLoginForm"
-            type="password"
-            class="form-control"
-            [ngClass]="{ 'is-invalid': password?.invalid && (password?.dirty || password?.touched) }"
-            formControlName="password"
-          />
-        </div>
-
-        <!-- Submit button -->
-        <button
-          type="submit"
-          class="btn btn-primary btn-block mb-4"
-          [disabled]="loginForm.invalid">
-            Iniciar sesión
-        </button>
-      </form>
+    <!-- Register button -->
+    <button class="btn btn-lg btn-success my-2">
+      Crear cuenta
+    </button>
+  </div>
+  <div class="logo">
+    <div class="h-100 d-flex flex-column justify-content-end">
+      <img src="../../../assets/icon.svg" alt="">
     </div>
   </div>
-  {{ 'Cookie: ' }}
-  {{ cookie }}
+  <div class="login-form">
+    <div class="d-flex flex-column align-items-center p-5">
+      <h1 class="pb-5">Inicia sesión</h1>
+      <div class="w-75">
+        <div class="card shadow">
+          <div class="card-body">
+            <!-- [ngClass]="(email.dirty || email.touched) ? (email.invalid ? 'is-invalid' : 'is-valid') : ''" -->
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <!-- Email input -->
+              <div class="form-group my-4">
+                <label class="form-label" for="emailLabelLoginForm">
+                  Email
+                </label>
+                <input id="emailInputLoginForm" type="text" class="form-control"
+                  [ngClass]="{ 'is-invalid': email?.invalid && (email?.dirty || email?.touched) }"
+                  formControlName="email" autocomplete="off" />
+                <!-- <label id="emailErrorLoginForm" *ngIf="email.invalid && (email.dirty || email.touched)" class="small text-danger">
+                      <div *ngIf="email.errors?.['required']" class="text-danger">Campo requerido.</div>
+                      <div *ngIf="email.errors?.['email']" class="text-danger">Debe ser un correo válido.</div>
+                    </label> -->
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="passwordLabelLoginForm">
+                  Password
+                </label>
+                <input id="passwordInputLoginForm" type="password" class="form-control"
+                  [ngClass]="{ 'is-invalid': password?.invalid && (password?.dirty || password?.touched) }"
+                  formControlName="password" />
+              </div>
+              <div class="d-flex flex-column align-items-center">
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary my-2" [disabled]="loginForm.invalid">
+                  Iniciar sesión
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
