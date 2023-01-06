@@ -1,0 +1,42 @@
+<div>
+  <div class="card" style="width: 50%;">
+    <div class="card-body">
+      <!-- [ngClass]="(email.dirty || email.touched) ? (email.invalid ? 'is-invalid' : 'is-valid') : ''" -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <!-- Email input -->
+        <div class="form-group my-4">
+          <label class="form-label" for="emailLabelLoginForm">
+            Email
+          </label>
+          <input id="emailInputLoginForm" type="text" class="form-control"
+            [ngClass]="{ 'is-invalid': email?.invalid && (email?.dirty || email?.touched) }" formControlName="email"
+            autocomplete="off" />
+          <!-- <label id="emailErrorLoginForm" *ngIf="email.invalid && (email.dirty || email.touched)" class="small text-danger">
+          <div *ngIf="email.errors?.['required']" class="text-danger">Campo requerido.</div>
+          <div *ngIf="email.errors?.['email']" class="text-danger">Debe ser un correo válido.</div>
+        </label> -->
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="passwordLabelLoginForm">
+            Password
+          </label>
+          <input id="passwordInputLoginForm" type="password" class="form-control"
+            [ngClass]="{ 'is-invalid': password?.invalid && (password?.dirty || password?.touched) }"
+            formControlName="password" />
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="loginForm.invalid">
+          Iniciar sesión
+        </button>
+
+        <!-- Register button -->
+        <button class="btn btn-secondary btn-block mb-4 ms-3">
+          Crear cuenta
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

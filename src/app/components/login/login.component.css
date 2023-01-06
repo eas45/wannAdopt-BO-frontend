@@ -1,0 +1,27 @@
+.welcome-display {
+  height: 85vh;
+  background: whitesmoke;
+  border-radius: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.welcome-text {
+  height: 80%;
+  flex: 1 0 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.login-form {
+  height: 80%;
+  flex: 1 1 300px;
+}
+
+.logo {
+  height: 80%;
+  flex: 0 1 100px;
+}
