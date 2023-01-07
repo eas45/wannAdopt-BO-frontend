@@ -13,7 +13,7 @@ export class AddAnimalComponent {
     name: ['', Validators.required],
     breed: ['', Validators.required],
     age: [0, Validators.required],
-    sex: [false, Validators.required],
+    sex: ['0', Validators.required],
     energy: [''],
     size: [''],
     hair: ['']
@@ -40,7 +40,7 @@ export class AddAnimalComponent {
       name: this.name.value,
       breed: this.breed.value,
       age: this.age.value,
-      sex: this.sex.value == 'false' ? false : true,
+      sex: this.sex.value == '0' ? false : true,
       energy: this.energy.value,
       size: this.size.value,
       hair: this.hair.value,

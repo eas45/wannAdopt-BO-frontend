@@ -14,6 +14,7 @@ import { AnimalDetailsComponent } from './components/animal-details/animal-detai
 import { AnimalsListComponent } from './components/animals-list/animals-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FontAwesomeModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

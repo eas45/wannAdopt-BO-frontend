@@ -1,5 +1,4 @@
 .submit-form {
-  background: black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,19 +7,17 @@
 }
 
 .layout {
-  background: red;
   height: 70vh;
   display: flex;
 }
 
 .form {
-  background: green;
   flex: 1 1 300px;
   justify-content: center;
   display: flex;
 }
 
 .template {
-  background: yellow;
-  flex: 1 1 300px;
+  height: 70%;
+  flex: 0 1 350px;
 }

@@ -1,7 +1,7 @@
-<div class="container px-5 layout">
+<div class="container ps-5 layout">
   <div class="form">
-    <form *ngIf="!submitted" class="submit-form" [formGroup]="animalForm">
-      <div class="bg-primary d-flex">
+    <form *ngIf="!submitted" class="submit-form border border-dark border-opacity-25 rounded-3 bg-light" [formGroup]="animalForm">
+      <div class="d-flex">
         <div class="form-group mx-4">
           <label for="name">Nombre</label>
           <input id="name" formControlName="name" type="text" class="form-control" name="name" autocomplete="off" />
@@ -12,29 +12,29 @@
           <input formControlName="breed" class="form-control" id="breed" name="breed" autocomplete="off" />
         </div>
       </div>
-      <div class="bg-secondary d-flex">
+      <div class="d-flex">
         <div class="form-group mx-4">
           <label for="age">Edad</label>
           <input type="number" min="0" max="25" formControlName="age" class="form-control" id="age" name="age"
             autocomplete="off" />
         </div>
 
-        <div>
+        <div class="form-group mx-4">
           <div>
             <label for="sex">Sexo</label>
           </div>
           <div class="d-flex">
-            <select class="form-select">
-              <option value="false">Hembra</option>
-              <option value="true">Macho</option>
+            <select class="form-select" formControlName="sex">
+              <option value="0">Hembra</option>
+              <option value="1">Macho</option>
             </select>
           </div>
         </div>
       </div>
-      <div class="bg-info d-flex">
+      <div class="d-flex">
         <div class="form-group me-2">
           <label class="mx-2" for="energy">Energía</label>
-          <select class="form-select"formControlName="energy">
+          <select class="form-select" formControlName="energy">
             <option *ngFor="let energy of energyList" [ngValue]="energy">
               {{ energy }}
             </option>
@@ -62,17 +62,53 @@
       <button (click)="saveAnimal()" class="btn btn-success btn-lg">Añadir</button>
     </form>
 
-    <div *ngIf="submitted">
+    <div *ngIf="submitted" class="d-flex flex-column justify-content-center align-items-center">
       <h4>¡Has unido un nuevo animal a la plataforma!</h4>
       <button class="btn btn-success" (click)="newAnimal()">Añadir otro</button>
     </div>
   </div>
-  <div class="template">
-    <div class="card">
-      <div class="card-body">
-        Hola
+
+  <div class="d-flex align-items-center">
+    <div class="template">
+      <div class="card h-100 shadow">
+        <div class="card-body d-flex flex-column">
+          <div class="text-center">
+            <img alt="Animal photo" src="../../../assets/alvan-nee-eoqnr8ikwFE-unsplash.jpg"
+              style="width: 300px; height: 300px; object-fit: cover;" />
+          </div>
+          <div class="d-flex flex-column justify-content-evenly h-25 mt-3">
+            <div>
+              <h3 class="card-title">{{name.value == '' ? 'Nombre' : name.value}}</h3>
+            </div>
+            <div>
+              <h5 class="card-subtitle text-muted">{{breed.value == '' ? 'Raza' : breed.value}}</h5>
+            </div>
+            <div class="d-flex justify-content-between">
+              <div>
+                <strong>Edad: </strong>
+                {{age.value == '' ? 'Edad' : age.value}}
+              </div>
+              <div>
+                <h4>{{ sex.value == '0' ? '&#9792;' : '&#9794;' }}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex text-center border-top flex-grow-1">
+          <div class="ps-3">
+            <strong>Energía</strong>
+            {{ energy.value == '' ? 'Enegía' : energy.value }}
+          </div>
+          <div class="px-3">
+            <strong>Tamaño</strong>
+            {{ size.value == '' ? 'Tamaño' : size.value }}
+          </div>
+          <div class="ps-3">
+            <strong>Pelaje</strong>
+            {{ hair.value == '' ? 'Pelaje' : hair.value }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
 </div>
