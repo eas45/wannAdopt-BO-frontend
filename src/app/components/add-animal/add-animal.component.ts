@@ -19,6 +19,9 @@ export class AddAnimalComponent {
     hair: ['']
   });
   submitted: boolean = false;
+  energyList = ['Poca', 'Mucha'];
+  sizeList = ['Pequeño', 'Mediano', 'Grande'];
+  hairList = ['Corto', 'Largo'];
 
   constructor(
     private fb: FormBuilder,
@@ -37,7 +40,7 @@ export class AddAnimalComponent {
       name: this.name.value,
       breed: this.breed.value,
       age: this.age.value,
-      sex: this.sex.value,
+      sex: this.sex.value == 'false' ? false : true,
       energy: this.energy.value,
       size: this.size.value,
       hair: this.hair.value,
