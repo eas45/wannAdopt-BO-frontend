@@ -15,10 +15,7 @@ export class StorageService {
   
   public saveLoginData(loginData: any): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.removeItem(EMAIL_KEY);
-    // window.sessionStorage.setItem(TOKEN_KEY, JSON.stringify(loginData));
     window.sessionStorage.setItem(TOKEN_KEY, loginData.token);
-    window.sessionStorage.setItem(EMAIL_KEY, loginData.email);
   }
 
   public getToken(): any {
