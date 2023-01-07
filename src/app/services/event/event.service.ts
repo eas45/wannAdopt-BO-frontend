@@ -13,6 +13,10 @@ export class EventService {
   publishLogin(): void {    
     this.loginSubject.next(true);
   }
+  
+  publishLogout(): void {    
+    this.loginSubject.next(false);
+  }
 
   getLoginObservable(): Subject<any> {
     return this.loginSubject;

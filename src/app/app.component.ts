@@ -28,15 +28,20 @@ export class AppComponent {
     });
 
     const token = this.storageService.getToken();
+    console.log(token);
+    
     this.isLoggedIn = token ? true : false;
+
+    console.log('El estado del login es: ' + this.isLoggedIn);
+    
   }
   
   logout(): void {
     this.authService.logout().subscribe({
       next: res => {
         console.log(res);
+        this.event.publishLogout();
         this.storageService.clean();
-
         window.location.reload();
       },
       error: err => {

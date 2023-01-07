@@ -25,7 +25,7 @@ export class StorageService {
       return token;
     }
 
-    return {};
+    return null;
   }
 
   public getEmail(): any {
