@@ -35,6 +35,10 @@ export class AnimalService {
     return this.http.get(`${baseUrl}/shelter`, { params });
   }
 
+  getResquests(id: any): Observable<any> {
+    return this.http.get(`${baseUrl}/${id}/requests`);
+  }
+
   // deleteAll(): Observable<any> {
   //   return this.http.delete(baseUrl);
   // }

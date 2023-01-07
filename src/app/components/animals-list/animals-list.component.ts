@@ -63,6 +63,16 @@ export class AnimalsListComponent implements OnInit {
   setActiveAnimal(animal: Animal, index: number): void {
     this.currentAnimal = animal;
     this.currentIndex = index;
+    // Solicitar personas interesadas en él
+    this.animalService.getResquests(animal?.id)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
   }
 
   handlePageChange(event: number): void {
