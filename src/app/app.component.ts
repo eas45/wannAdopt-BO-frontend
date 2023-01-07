@@ -11,7 +11,6 @@ import { EventService } from './services/event/event.service';
 export class AppComponent {
   title = 'wannAdopt-BO-frontend';
   isLoggedIn: boolean = false;
-  email: string = '+';
 
   constructor(
     private storageService: StorageService,
@@ -25,9 +24,11 @@ export class AppComponent {
   async init() {
     this.event.getLoginObservable().subscribe((isLoggedIn) => {
       console.log('Usuario logueado : ' + isLoggedIn);
-      
       this.isLoggedIn = isLoggedIn;
     });
+
+    const token = this.storageService.getToken();
+    this.isLoggedIn = token ? true : false;
   }
   
   logout(): void {
