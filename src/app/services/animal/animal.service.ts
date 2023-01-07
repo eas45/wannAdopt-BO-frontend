@@ -31,8 +31,8 @@ export class AnimalService {
     return this.http.delete(`${baseUrl}/${id}`);
   }
 
-  findAllByShelter(): Observable<any> {
-    return this.http.get(`${baseUrl}/shelter`);
+  findAllByShelter(params: any): Observable<any> {
+    return this.http.get(`${baseUrl}/shelter`, { params });
   }
 
   // deleteAll(): Observable<any> {

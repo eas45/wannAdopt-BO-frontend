@@ -15,7 +15,7 @@ export class AnimalsListComponent implements OnInit {
   page = 1;
   count = 0;
   pageSize = 3;
-  pagesSizes = [3, 6, 9];
+  pageSizes = [3, 6, 9];
 
   constructor(private animalService: AnimalService) {}
 
@@ -23,12 +23,30 @@ export class AnimalsListComponent implements OnInit {
     this.retrieveAnimals();
   }
 
+  getRequestParams(page: number, pageSize: number): any {
+    let params: any = {};
+
+    if (page) {
+      params[`page`] = page - 1;
+    }
+
+    if (pageSize) {
+      params[`size`] = pageSize;
+    }
+
+    return params;
+  }
+
   retrieveAnimals(): void {
-    this.animalService.findAllByShelter()
+    const params = this.getRequestParams(this.page, this.pageSize);
+
+    this.animalService.findAllByShelter(params)
       .subscribe({
         next: (response) => {
-          this.animals = response.animals;
-          console.log(response.animals);
+          const { animals, totalItems } = response;
+          this.animals = animals;
+          this.count = totalItems;
+          console.log(animals);
         },
         error: (err) => {
           console.log(err.error);
@@ -45,6 +63,17 @@ export class AnimalsListComponent implements OnInit {
   setActiveAnimal(animal: Animal, index: number): void {
     this.currentAnimal = animal;
     this.currentIndex = index;
+  }
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrieveAnimals();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrieveAnimals();
   }
 
 }
