@@ -19,8 +19,8 @@ export class AnimalService {
     return this.http.get<Animal>(`${baseUrl}/${id}`);
   }
 
-  create(animal: any): Observable<any> {
-    return this.http.post(`${baseUrl}?shelter=5`, animal);
+  create(animal: any, shelterId: number): Observable<any> {
+    return this.http.post(`${baseUrl}?shelter=${shelterId}`, animal);
   }
 
   update(id: any, data: any): Observable<any> {

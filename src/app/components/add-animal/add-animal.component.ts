@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Animal } from 'src/app/models/animal.model';
 import { AnimalService } from 'src/app/services/animal/animal.service';
+import jwtDecode from 'jwt-decode';
+import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-add-animal',
@@ -25,7 +27,8 @@ export class AddAnimalComponent {
 
   constructor(
     private fb: FormBuilder,
-    private animalService: AnimalService) { }
+    private animalService: AnimalService,
+    private storageService: StorageService) { }
 
   get name(): any { return this.animalForm.get('name'); }
   get breed(): any { return this.animalForm.get('breed'); }
@@ -35,7 +38,7 @@ export class AddAnimalComponent {
   get size(): any { return this.animalForm.get('size'); }
   get hair(): any { return this.animalForm.get('hair'); }
 
-  saveAnimal(): void {
+  async saveAnimal(): Promise<void> {
     const animal: Animal = {
       name: this.name.value,
       breed: this.breed.value,
@@ -48,7 +51,11 @@ export class AddAnimalComponent {
 
     console.log(animal);
 
-    this.animalService.create(animal)
+    const token = this.storageService.getToken();
+    const decodedToken = jwtDecode(token);
+    const { id }: any = decodedToken;
+
+    this.animalService.create(animal, id)
       .subscribe({
         next: (res) => {
           console.log(res);
