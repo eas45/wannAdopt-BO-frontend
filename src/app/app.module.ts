@@ -13,6 +13,7 @@ import { AddAnimalComponent } from './components/add-animal/add-animal.component
 import { AnimalDetailsComponent } from './components/animal-details/animal-details.component';
 import { AnimalsListComponent } from './components/animals-list/animals-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

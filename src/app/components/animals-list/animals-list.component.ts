@@ -8,10 +8,14 @@ import { AnimalService } from 'src/app/services/animal/animal.service';
   styleUrls: ['./animals-list.component.css']
 })
 export class AnimalsListComponent implements OnInit {
-  animals?: Animal[];
+  animals: Animal[] = [];
   currentAnimal: Animal = {};
   currentIndex: number = -1;
-  title: string = '';
+
+  page = 1;
+  count = 0;
+  pageSize = 3;
+  pagesSizes = [3, 6, 9];
 
   constructor(private animalService: AnimalService) {}
 
@@ -20,11 +24,11 @@ export class AnimalsListComponent implements OnInit {
   }
 
   retrieveAnimals(): void {
-    this.animalService.findAll()
+    this.animalService.findAllByShelter()
       .subscribe({
-        next: (animals) => {
-          this.animals = animals;
-          console.log(animals);
+        next: (response) => {
+          this.animals = response.animals;
+          console.log(response.animals);
         },
         error: (err) => {
           console.log(err.error);
