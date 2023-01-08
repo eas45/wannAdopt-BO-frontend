@@ -18,6 +18,7 @@ export class AnimalsListComponent implements OnInit {
   pageSizes = [3, 6, 9];
 
   animalSelected: boolean = false;
+  requests = [];
 
   constructor(private animalService: AnimalService) {}
 
@@ -80,6 +81,7 @@ export class AnimalsListComponent implements OnInit {
         next: (res) => {
           console.log(res);
           this.animalSelected = true;
+          this.retrieveAnimalRequests();
         },
         error: (err) => {
           console.log(err);
@@ -98,6 +100,19 @@ export class AnimalsListComponent implements OnInit {
     this.page = 1;
     this.retrieveAnimals();
     this.resetAll();
+  }
+
+  retrieveAnimalRequests(): void {
+    this.animalService.getResquests(this.currentAnimal.id)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.requests = res;
+        },
+        error: (err) => {
+          console.log(err.error);
+        }
+      })
   }
 
 }

@@ -1,2 +1,22 @@
-<p>requests-list works!</p>
-{{ requests }}
+<div style="height: 800px;">
+  <div class="d-flex justify-content-center border rounded-3" style="height: 100px">
+    <div>Detalles</div>
+  </div>
+  <div style="max-height: 100%; overflow: auto;">
+    <div class="list-group mt-5">
+      <div class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let request of requests; let i = index">
+        <div>
+          {{ request.firstSurname + ' ' + request.secondSurname }} -- {{ request.dateOfBirth }}
+        </div>
+        <div>
+          <button class="btn btn-outline-success me-2">
+            <fa-icon [icon]="faCheck"></fa-icon>
+          </button>
+          <button class="btn btn-outline-danger">
+            <fa-icon [icon]="faXMark"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,7 +14,7 @@
       </select>
     </div>
     <div class="w-75">
-      <ul class="list-group bg-secondary flex-grow-1">
+      <ul class="list-group flex-grow-1">
         <li class="list-group-item text-center" *ngFor="let animal of animals | paginate : {
           itemsPerPage: pageSize, currentPage: page, totalItems: count
         }; let i = index" [class.active]="i == currentIndex" (click)="setActiveAnimal(animal, i)">
@@ -35,6 +35,6 @@
     <app-animal-details [viewMode]="animalSelected" [currentAnimal]="currentAnimal"></app-animal-details>
   </div>
   <div class="requests-space">
-    Requests
+    <app-requests-list class="w-75" [requests]="requests"></app-requests-list>
   </div>
 </div>
