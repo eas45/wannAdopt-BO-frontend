@@ -15,6 +15,7 @@ import { AnimalsListComponent } from './components/animals-list/animals-list.com
 import { ProfileComponent } from './components/profile/profile.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RequestsListComponent } from './components/requests-list/requests-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AddAnimalComponent,
     AnimalDetailsComponent,
     AnimalsListComponent,
-    ProfileComponent
+    ProfileComponent,
+    RequestsListComponent
   ],
   imports: [
     BrowserModule,
