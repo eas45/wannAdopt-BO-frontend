@@ -23,21 +23,16 @@ export class AnimalDetailsComponent implements OnInit {
 
   constructor(
     private animalService: AnimalService,
-    private route: ActivatedRoute,
     private router: Router) { }
 
-  ngOnInit() {
-    if (!this.viewMode) {
-      this.message = '';
-      this.find(this.route.snapshot.params['id']);
-    }
-  }
+  ngOnInit() { }
 
   find(id: string): void {
     this.animalService.find(id)
       .subscribe({
         next: (animal) => {
           this.currentAnimal = animal;
+          this.viewMode = true;
         },
         error: (err) => {
           console.log(err.error);

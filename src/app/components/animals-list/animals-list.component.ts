@@ -17,6 +17,8 @@ export class AnimalsListComponent implements OnInit {
   pageSize = 3;
   pageSizes = [3, 6, 9];
 
+  animalSelected: boolean = false;
+
   constructor(private animalService: AnimalService) {}
 
   ngOnInit() {
@@ -54,10 +56,19 @@ export class AnimalsListComponent implements OnInit {
       });
   }
 
-  refreshList(): void {
-    this.retrieveAnimals();
+  resetList(): void {
+    this.currentIndex = -1;
+  }
+
+  resetAll(): void {
     this.currentAnimal = {};
     this.currentIndex = -1;
+    this.animalSelected = false;
+  }
+
+  refreshList(): void {
+    this.retrieveAnimals();
+    this.resetAll();
   }
 
   setActiveAnimal(animal: Animal, index: number): void {
@@ -68,6 +79,7 @@ export class AnimalsListComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
+          this.animalSelected = true;
         },
         error: (err) => {
           console.log(err);
@@ -78,12 +90,14 @@ export class AnimalsListComponent implements OnInit {
   handlePageChange(event: number): void {
     this.page = event;
     this.retrieveAnimals();
+    this.resetList();
   }
 
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
     this.page = 1;
     this.retrieveAnimals();
+    this.resetAll();
   }
 
 }
