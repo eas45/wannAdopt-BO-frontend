@@ -39,6 +39,17 @@ export class AnimalService {
     return this.http.get(`${baseUrl}/${id}/requests`);
   }
 
+  sendRequestReview(userId: any, animalId: any, status: any): Observable<any> {
+    return this.http.post(`${baseUrl}/${animalId}/requests`, {
+      userId
+    },
+    {
+      params: {
+        status
+      }
+    });
+  }
+
   // deleteAll(): Observable<any> {
   //   return this.http.delete(baseUrl);
   // }

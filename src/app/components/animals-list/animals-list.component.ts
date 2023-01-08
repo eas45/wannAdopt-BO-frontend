@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Animal } from 'src/app/models/animal.model';
 import { AnimalService } from 'src/app/services/animal/animal.service';
+import { EventService } from 'src/app/services/event/event.service';
 
 @Component({
   selector: 'app-animals-list',
@@ -20,9 +21,19 @@ export class AnimalsListComponent implements OnInit {
   animalSelected: boolean = false;
   requests = [];
 
-  constructor(private animalService: AnimalService) {}
+  constructor(
+    private animalService: AnimalService,
+    private eventService: EventService
+    ) {}
 
   ngOnInit() {
+    this.eventService.getReviewObservable()
+      .subscribe({
+        next: (x) => {
+          console.log(x);
+          this.retrieveAnimalRequests();
+        }
+      });
     this.retrieveAnimals();
   }
 
@@ -107,12 +118,12 @@ export class AnimalsListComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.requests = res;
+          this.requests = res.filter((r: any) => r.Animal_Users.status != false);
         },
         error: (err) => {
           console.log(err.error);
         }
-      })
+      });
   }
 
 }

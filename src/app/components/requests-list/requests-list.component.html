@@ -8,13 +8,18 @@
         <div>
           {{ request.firstSurname + ' ' + request.secondSurname }} -- {{ request.dateOfBirth }}
         </div>
-        <div>
-          <button class="btn btn-outline-success me-2">
+        <div *ngIf="request.Animal_Users.status == null">
+          <button class="btn btn-outline-success btn-sm me-2" (click)="reviewRequest(request.Animal_Users.userId, request.Animal_Users.animalId, 1)">
             <fa-icon [icon]="faCheck"></fa-icon>
           </button>
-          <button class="btn btn-outline-danger">
+          <button class="btn btn-outline-danger btn-sm"  (click)="reviewRequest(request.Animal_Users.userId, request.Animal_Users.animalId, 0)">
             <fa-icon [icon]="faXMark"></fa-icon>
           </button>
+        </div>
+        <div *ngIf="request.Animal_Users.status == true">
+          <div class="text-primary">
+            <fa-icon [icon]="faCheck"></fa-icon>
+          </div>
         </div>
       </div>
     </div>
